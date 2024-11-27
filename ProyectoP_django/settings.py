@@ -23,16 +23,24 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-jf*)v(&if8ka8bu6y%0f31toq-ywyppkwmmj=+m_%vmp*88nwb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+LOGIN_URL = '/login/'
+# Redirección después de un inicio de sesión exitoso
+LOGIN_REDIRECT_URL = '/dashboard/'
+
+# Redirección después de cerrar sesión
+LOGOUT_REDIRECT_URL = '/login/'
+
+
+ALLOWED_HOSTS = ['127.0.0.1','localhost']
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'app_1',
-    'django.cosntrib.admin',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
