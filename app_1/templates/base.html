@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<style>
+    /* TEXTOS NO IMPORTANTES, TEXTOS SECUNDARIOS */
+    .rosa_claro{
+        color: #FFC1CC;
+    }
+    /* FONDO EN GENERAL */
+    .rosa_pastel{
+        background-color: #FF99A5;
+    }
+    /* ENLANCES O HIPERVINCULOS */
+    .rosa_vivo{
+        color: #FF5773;
+    }
+    /* ENCABEZADOS O TITULOS IMPORTANTES*/
+    .fucsia{
+        color: #E91E63;
+    }
+    /* BORDES DE RECUADROS O BOTONES */
+    .rosa_oscuro{
+        color: #C2185B;
+    }
+    /* ICONOES O ELEMENTOS DECORATIVOS */
+    .rosa_cereza{
+        color: #9C1B47;
+    }
+    /* IFONDO EN AREAS ESPECIFICAS */
+    .guinda_claro{
+        color: #7B1337;
+    }
+    /* RESLTAR CAJAS DE ADEVERTENCIA O INFORMACION IMPROTANTE */
+    .guinda_oscuro{
+        background-color: #580D24;
+    }
+</style>
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mi Proyecto{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <nav class="navbar navbar-expand-lg bg-light ">
+        <div class="container rosa_pastel">
+          <div class="mx-auto">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'dashboard' %}">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'productos' %}">Productos</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

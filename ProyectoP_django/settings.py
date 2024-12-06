@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-jf*)v(&if8ka8bu6y%0f31toq-ywyppkwmmj=+m_%vmp*88nwb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 LOGIN_URL = '/login/'
 # Redirección después de un inicio de sesión exitoso
@@ -63,7 +63,7 @@ ROOT_URLCONF = 'ProyectoP_django.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -84,8 +84,12 @@ WSGI_APPLICATION = 'ProyectoP_django.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Proyecto_Proyecto',
+        'USER': 'root',
+        'PASSWORD': 'jwpqh35o',
+        'HOST': 'localhost',  # o la dirección IP o nombre de host de tu servidor de base de datos
+        'PORT': '3306',  # El puerto por defecto para MySQL
     }
 }
 
@@ -128,7 +132,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'app_1/static'),  # Si tienes archivos estáticos adicionales
+    BASE_DIR / "static",
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
