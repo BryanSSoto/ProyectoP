@@ -30,7 +30,7 @@ class Productos(ModeloBase):
     nombre = models.CharField(max_length=50)
     descripcion = models.CharField(max_length=100,null=True,blank=True)
     categoria = models.ForeignKey(Categorias,on_delete=models.CASCADE,related_name='productos')
-    precio = models.PositiveIntegerField()
+    precio = models.DecimalField(max_digits=10, decimal_places=2)
     estado = models.IntegerField(choices=Estado.choices,default=Estado.NUEVO)
     imagen = models.ImageField(upload_to='productos_imagenes/')
     
@@ -38,5 +38,5 @@ class Productos(ModeloBase):
         verbose_name = 'Producto'
         verbose_name_plural = 'Productos'
     def __str__(self):
-        return ('%s, %s, %s' % self.nombre,self.categoria,self.estado)
+        return ('%s, %s, %s' % (self.nombre,self.categoria,self.estado))
     

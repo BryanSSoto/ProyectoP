@@ -21,7 +21,7 @@ from django.views.generic.base import RedirectView
 from django.conf.urls.static import static
 from django.conf import settings
 from app_1.functions.dashboard import dashboard 
-from app_1.functions.productos import productos
+from app_1.functions.productos import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', RedirectView.as_view(url='/login/', permanent=False), name='home'),
@@ -29,5 +29,9 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(),name='cerrar_sesion'),
     path('dashboard/', dashboard,name='dashboard'),
     path('productos/', productos,name='productos'),
+    path('productos/desactivar_producto/<id_producto>', desactivar_producto,name='desactivar_producto'),
+    path('productos/editar_producto/<id_producto>', editar_producto,name='editar_producto'),
     # path('productos/agregar_producto', agregar_producto,name='agregar_producto'),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

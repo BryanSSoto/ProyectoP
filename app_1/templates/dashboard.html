@@ -7,17 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <style>
-        .mercado_libre::before {
-            content: ''; /* Limpia el contenido para usar una imagen de fondo */
-            display: inline-block;
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/d4/MercadoLibre_logo.PNG'); /* URL del icono */
-            background-size: contain; /* Ajusta la imagen al contenedor */
-            background-repeat: no-repeat; /* Evita que se repita la imagen */
-            width: 50px; /* Ajusta el ancho del icono */
-            height: 50px; /* Ajusta la altura del icono */
-            margin-right: 8px; /* Espacio entre el icono y el texto */
-            vertical-align: middle;
-        }
         body {
             font-family: Arial, sans-serif;
             background-color: #f8f9fa;
@@ -51,6 +40,12 @@
             font-size: 0.9em;
             color: #6c757d;
         }
+
+        .carousel-item img {
+            max-width: 20%;
+            max-height: 20%;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
@@ -59,25 +54,29 @@
         <h1>Bienvenido al Dashboard</h1>
         <p>Este es el panel principal donde puedes gestionar tus datos y configuraciones.</p>
 
-
-        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                {% for famoso in famosos %}
-                    <div class="carousel-item active">
-                        <img src="{% static 'berlin_1.jpeg' %}" class="d-block w-100" alt="Imagen 1">
+        <div id="carouselExampleIndicators" class="carousel slide rosa_pastel" data-bs-ride="carousel" >
+            <div class="carousel-inner" >
+                {%for famoso in famosos %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        {% comment %} <a href="{% url 'nombre_de_la_vista' famoso.id %}"> {% endcomment %}
+                        <img class="d-block w-100" src="{{famoso.imagen.url}}" alt="slide_{{famoso.id}}">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>{{famoso.nombre}}</h5>
+                            <p>$ {{famoso.precio}}</p>
+                        </div>
                     </div>
                 {% endfor %}
             </div>
-            <!-- Controles (botones de navegación) -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Anterior</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+              <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Siguiente</span>
-            </button>
+              <span class="sr-only">Siguiente</span>
+            </a>
           </div>
+
         <div class="row">
             <div class="col-md-4">
                 <div class="card">
